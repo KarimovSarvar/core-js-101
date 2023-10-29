@@ -365,16 +365,17 @@ function isBracketsBalanced(str) {
   };
   const openBrackets = Object.values(br);
   const stack = [];
+
   for (let i = 0; i < str.length; i += 1) {
     const char = str[i];
+
     if (openBrackets.includes(char)) {
       stack.push(char);
-    } else {
-      if (stack.length === 0 || br[char] !== stack.pop()) {
-        return false;
-      }
+    } else if (stack.length === 0 || br[char] !== stack.pop()) {
+      return false;
     }
   }
+
   return stack.length === 0;
 }
 
